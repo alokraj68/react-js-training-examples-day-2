@@ -1,7 +1,9 @@
-import React from "react";
+import React,{Suspense}  from "react";
 import Typing from "react-typing-animation";
 // import logo from './logo.svg';
 import "./App.css";
+
+// import { add } from './math.js';
 
 function App() {
   return (
@@ -27,93 +29,92 @@ function App() {
           <Typing.Delay ms={2000} />2 Play ground
         </h2>
       </Typing>
-
       {/* example 1 */}
       {/* <Toggle /> */}
 
       {/* example 2 */}
-
       {/* <ParentSharesToChild/> */}
 
       {/* example 2.1 */}
-
       {/* <ChildToParent/> */}
 
       {/* exmaple 2.2 */}
-
-      <UserProvider>
+      {/* <UserProvider>
         <UserMessage />
         <UserSettings />
-      </UserProvider>
+      </UserProvider> */}
+
+      {/* exmaple 3.1 -  code splitting :  bundling */}
+      {/* <h2>Calc: {add(16, 26)}</h2> */}
 
     </div>
   );
 }
 
+
 // example 2.2 -- react context api
 
-const UserContext = React.createContext({
-  username: "",
-  updateUsername: () => {}
-});
+// const UserContext = React.createContext({
+//   username: "",
+//   updateUsername: () => {}
+// });
 
-export class UserProvider extends React.Component {
-  updateUsername = newUsername => {
-    this.setState({ username: newUsername });
-  };
+// export class UserProvider extends React.Component {
+//   updateUsername = newUsername => {
+//     this.setState({ username: newUsername });
+//   };
 
-  state = {
-    username: "user name",
-    updateUsername: this.updateUsername
-  };
+//   state = {
+//     username: "user name",
+//     updateUsername: this.updateUsername
+//   };
 
-  render() {
-    return (
-      <UserContext.Provider value={this.state}>
-        {this.props.children}
-      </UserContext.Provider>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <UserContext.Provider value={this.state}>
+//         {this.props.children}
+//       </UserContext.Provider>
+//     );
+//   }
+// }
 
-export class SomeElement extends React.Component {
-  render() {
-    return (
-      <UserContext.Consumer>
-         {({ username }) => <h2> In some other element: {username}!</h2>}
-      </UserContext.Consumer>
-    );
-  }
-}
+// export class SomeElement extends React.Component {
+//   render() {
+//     return (
+//       <UserContext.Consumer>
+//          {({ username }) => <h2> In some other element: {username}!</h2>}
+//       </UserContext.Consumer>
+//     );
+//   }
+// }
 
+// function UserMessage() {
+//   return (
+//     <UserContext.Consumer>
+//       {({ username }) => <h1>Welcome {username}!</h1>}
+//     </UserContext.Consumer>
+//   );
+// }
 
-function UserMessage() {
-  return (
-    <UserContext.Consumer>
-      {({ username }) => <h1>Welcome {username}!</h1>}
-    </UserContext.Consumer>
-  );
-}
-
-function UserSettings() {
-  return (
-    <UserContext.Consumer>
-      {({ updateUsername }) => (
-        <div>
-          <h2>Settings</h2>
-          <label htmlFor="username">Username: </label>
-          <input
-            id="username"
-            type="text"
-            onChange={event => {
-              updateUsername(event.target.value);
-            }}
-          />
-        </div>
-      )}
-    </UserContext.Consumer>
-  );
-}
+// function UserSettings() {
+//   return (
+//     <UserContext.Consumer>
+//       {({ updateUsername }) => (
+//         <div>
+//           <h2>Settings</h2>
+//           <label htmlFor="username">Username: </label>
+//           <input
+//             id="username"
+//             type="text"
+//             onChange={event => {
+//               updateUsername(event.target.value);
+//             }}
+//           />
+//         </div>
+//       )}
+//     </UserContext.Consumer>
+//   );
+// }
 
 // example 2.1 -- passing data to parent
 
